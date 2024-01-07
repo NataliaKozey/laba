@@ -1,8 +1,8 @@
 Створіть базу даних з необхідними таблицями, використовуючи SQL.
 
 Використовується mysql 8.1
-![image1](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%202.png)
-![image2](Picture 2.png)
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%201.png)
+![image2](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%202.png)
 Додайте принаймні два проєкти, три завдання для кожного проєкту та п'ять працівників.
 INSERT INTO employees (firstName, lastName, position, email)
 VALUES
@@ -28,7 +28,7 @@ VALUES
 SELECT projects.projectID,projects.projectName, employees.firstName, employees.lastName
 FROM projects
 JOIN employees ON projects.projectManagerID = employees.employeeID;
-![image3](Picture 3.png)
+![image3](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%203.png)
 
 Напишіть SQL-запит, який виведе всі завдання для конкретного проєкту разом з працівниками, яким призначено ці завдання.
 
@@ -36,12 +36,12 @@ SELECT tasks.*, employees.firstName, employees.lastName
 FROM tasks
 JOIN employees ON tasks.assignedToID = employees.employeeID
 WHERE tasks.projectID = 1;
-![image4](Picture 4.png)
+![image4](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%204.png)
 Обчисліть та виведіть середній та максимальний термін виконання завдань усіх проєктів.
 
 SELECT AVG(DATEDIFF(dueDate, startDate)) AS avr_duration, MAX(DATEDIFF(dueDate, startDate)) AS max_duration
 FROM tasks
 JOIN projects ON tasks.projectID = projects.projectID;
-![image5](Picture 5.png)
+![image5](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%205.png)
 Створіть backup-файл.
 
