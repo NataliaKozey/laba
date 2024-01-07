@@ -9,7 +9,7 @@
    db.createCollection('memberships')
    db.createCollection('workouts')
    db.createCollection('trainers')
-   ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/img.png)
+   ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/images/img.png)
    5. Заповнення колекцій даними:
    Додайте кілька записів до кожної колекції
    Команди
@@ -36,8 +36,8 @@
       { trainer_id: 2, name: "Iren", specialization: "height" },
       { trainer_id: 3, name: "Oleg", specialization: "medium" }
       ])
-      ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/img_1.png)
-      ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/img_3.png)
+      ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/images/img_1.png)
+      ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/images/img_3.png)
 6. Запити:
 Знайдіть всіх клієнтів віком понад 30 років
 
@@ -50,4 +50,4 @@ db.workouts.find({ difficulty: 'medium' })
 Покажіть інформацію про членство клієнта з певним client_id
 
 db.memberships.find({ client_id: 1 })
-![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/img_2.png)
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson16/images/img_2.png)
