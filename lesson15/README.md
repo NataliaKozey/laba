@@ -1,7 +1,7 @@
 Створіть базу даних з необхідними таблицями, використовуючи SQL.
 
 Використовується mysql 8.1
-![image1](https://github.dev/NataliaKozey/lesson15/blob/e315a0208df867d570a1bcc7368a2774c138a6a9/Picture%201.png)
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson15/Picture%202.png)
 ![image2](Picture 2.png)
 Додайте принаймні два проєкти, три завдання для кожного проєкту та п'ять працівників.
 INSERT INTO employees (firstName, lastName, position, email)
