@@ -50,9 +50,9 @@ INSERT INTO orders (client_id, product_id, quantity, order_date) VALUES
 Встановіть унікальний server-id
 Включіть бінарне логування
 Створіть користувацький обліковий запис для реплікації
-CREATE USER 'relpica'@'%' IDENTIFIED BY 'iI2F1e8fIJu4';
-ALTER USER 'relpica'@'%' IDENTIFIED WITH mysql_native_password BY 'iI2F1e8fIJu4';
-GRANT REPLICATION SLAVE ON *.* TO 'relpica'@'%';
+CREATE USER 'replica'@'%' IDENTIFIED BY 'iI2F1e8fIJu4';
+ALTER USER 'replica'@'%' IDENTIFIED WITH mysql_native_password BY 'iI2F1e8fIJu4';
+GRANT REPLICATION SLAVE ON *.* TO 'replica'@'%';
 FLUSH PRIVILEGES;
 ![image2](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_1.png)
 #3 Експорт даних з основного сервера:
@@ -71,7 +71,7 @@ mysqldump my_database > my_database.sql
 
 Налаштуйте вторинний сервер для з'єднання з основним сервером і вказівки на бінарний лог
 
-CHANGE MASTER TO MASTER_HOST='10.0.30.97', MASTER_USER='replica', MASTER_PASSWORD='iI2F1e8fIJu4', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=157;
+CHANGE MASTER TO MASTER_HOST='10.0.30.97', MASTER_USER='replica', MASTER_PASSWORD='iI2F1e8fIJu4', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=2274;
 
 #6 Запуск реплікації:
 
@@ -82,7 +82,7 @@ CHANGE MASTER TO MASTER_HOST='10.0.30.97', MASTER_USER='replica', MASTER_PASSWOR
 #7 Перевірка статусу реплікації:
 
 Використовуйте команду SHOW SLAVE STATUS на вторинному сервері для перевірки стану реплікації
-
+![image4](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_4.png)
 
 #8 Симуляція збою мастера:
 
