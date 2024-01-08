@@ -43,8 +43,10 @@ INSERT INTO orders (client_id, product_id, quantity, order_date) VALUES
 (2, 2, 2, '2024-01-01'),
 (3, 1, 1, '2024-01-02'),
 (1, 3, 3, '2024-01-03');
+
 ![image1](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_0.png)
 ![image2](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img.png)
+
 #2 Конфігурація основного сервера (master):
 
 Встановіть унікальний server-id
@@ -54,7 +56,9 @@ CREATE USER 'replica'@'%' IDENTIFIED BY 'iI2F1e8fIJu4';
 ALTER USER 'replica'@'%' IDENTIFIED WITH mysql_native_password BY 'iI2F1e8fIJu4';
 GRANT REPLICATION SLAVE ON *.* TO 'replica'@'%';
 FLUSH PRIVILEGES;
+
 ![image2](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_1.png)
+
 #3 Експорт даних з основного сервера:
 
 Зробіть дамп бази даних для імпорту на вторинний сервер
@@ -65,6 +69,7 @@ mysqldump my_database > my_database.sql
 
 Встановіть унікальний server-id, що відрізняється від основного сервера
 Імпортуйте дамп бази даних з основного сервера
+
 ![image2](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_2.png)
 
 #5 З'єднання slave з master:
@@ -76,14 +81,21 @@ CHANGE MASTER TO MASTER_HOST='10.0.30.97', MASTER_USER='replica', MASTER_PASSWOR
 #6 Запуск реплікації:
 
 Запустіть реплікацію на вторинному сервері
+
 ![image2](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_3.png)
 
 
 #7 Перевірка статусу реплікації:
 
 Використовуйте команду SHOW SLAVE STATUS на вторинному сервері для перевірки стану реплікації
+
 ![image4](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_4.png)
 
 #8 Симуляція збою мастера:
 
 Симулюйте збій основного сервера та перевірте, як вторинний сервер реагує на збій. Після відновлення основного сервера перевірте синхронізацію даних
+Виконали команду зупинку сервісу на master
+![image5](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_5.png)
+
+replica стала master
+![image6](https://github.com/NataliaKozey/laba/blob/master/lesson17/images/img_6.png)
