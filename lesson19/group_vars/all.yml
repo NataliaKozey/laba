@@ -1,0 +1,4 @@
+#ініціалізація використаних змінних
+mysql_root_password: ""
+myapp_user_password: ""
+ssh_key: "ssh-rsa ...."

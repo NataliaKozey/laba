@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - user_config
+    - install_soft
+    - web_server
+    - mysql_server

@@ -1,0 +1,41 @@
+---
+- name: Install pip
+  apt:
+    name: python3-pip
+    state: present
+
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
+
+- name: Install MySQL server
+  package:
+    name: mysql-server
+    state: present
+
+- name: Start MySQL service
+  service:
+    name: mysql
+    state: started
+
+- name: Secure MySQL installation
+  mysql_user:
+    name: root
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    check_implicit_admin: true
+    host: localhost
+
+- name: Create a MySQL user for external connections
+  mysql_user:
+    name: myapp_user
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    password: "{{ myapp_user_password }}"
+    priv: '*.*:ALL'
+    host: '%'
+
+- name: Create a MySQL database
+  mysql_db:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: myapp
+    state: present

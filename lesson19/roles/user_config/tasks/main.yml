@@ -1,0 +1,40 @@
+---
+
+- name: Create itdep group
+  group:
+    name: itdep
+    state: present
+
+- name: Ensure .ssh directory exists for devops user
+  file:
+    path: /home/devops/.ssh
+    state: directory
+    owner: devops
+    group: itdep
+    mode: "0700"
+
+- name: Create devops user
+  ansible.builtin.user:
+    name: devops
+    groups: itdep
+    create_home: yes
+    state: present
+
+- name: Generate SSH key for devops user
+  ansible.builtin.openssh_keypair:
+    path: /home/devops/.ssh/id_rsa
+    state: present
+
+- name: Add SSH key to authorized_keys
+  ansible.posix.authorized_key:
+    user: devops
+    key: "{{ ssh_key }}"
+
+- name: Create .bashrc file for devops user
+  copy:
+    content: |
+      PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    dest: /home/devops/.bashrc
+    owner: devops
+    group: itdep
+

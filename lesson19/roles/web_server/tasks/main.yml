@@ -1,0 +1,19 @@
+
+- name: Install nginx
+  package:
+    name: nginx
+    state: present
+
+- name: Copy custom nginx configuration
+  template:
+    src: templates/default
+    dest: /etc/nginx/sites-enabled/default
+
+- name: Restart Nginx service
+  service:
+    name: nginx
+    state: restarted
+
+
+#ansible-playbook server-playbook.yml -i inventory.ini --diff --check
+
