@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout ([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/NataliaKozey/ansible.git',
+                        credentialsId: 'github-ssh-credentials'
+                    ]]
+                ])
+            }
+
+        }
+
+        stage('Run Ansible Playbook') {
+            steps {
+                sshagent (credentials: ['ec2-ssh-key']) {
+                    sh '''
+                    ls -l
+                    pwd
+                    ansible-playbook server-playbook.yml -i inventory.ini --diff
+                    '''
+
+                }
+            }
+        }
+    }
+    post {
+        always {
+            mail to: 'nataliakozey@gmail.com',
+                subject: "Build: ${env.JOB_NAME} №${env.BUILD_NUMBER}",
+                body: "The build was completed. \n\nBuild URL: ${env.BUILD_URL}"
+        }
+    }
+}
