@@ -1,0 +1,17 @@
+
+server_host: 0.0.0.0
+transport_ssl_enabled: false
+http_ssl_enabled: false
+
+#ElasticSearch
+es_port: 9200
+discovery_type: "single-node"
+es_username: elastic
+es_password:
+
+#Kibana
+kibana_port: 5601
+
+#Logstash
+logstash_port: 9600
+
