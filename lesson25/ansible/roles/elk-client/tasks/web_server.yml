@@ -1,0 +1,14 @@
+
+- name: Install nginx
+  package:
+    name: nginx
+    state: present
+
+- name: Copy custom nginx configuration
+  ansible.builtin.template:
+    src: default.j2
+    dest: /etc/nginx/sites-enabled/default
+  notify: restart nginx
+
+
+

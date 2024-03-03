@@ -1,0 +1,12 @@
+---
+- name: Install and configure Server
+  include_tasks: base_install.yml
+
+- name: Install and configure Mysql
+  include_tasks: mysql_install.yml
+
+- name: Install and configure Web server
+  include_tasks: web_server.yml
+
+- name: Install and configure Metricbeat
+  include_tasks: elk_client.yml

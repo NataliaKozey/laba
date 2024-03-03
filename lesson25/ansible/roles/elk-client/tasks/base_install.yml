@@ -1,0 +1,24 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    update_cache: yes
+    state: present
+    name:
+      - wget
+      - git
+      - zip
+      - unzip
+      - php-fpm
+      - php-mysql
+      - php-imap
+      - php-gd
+      - php-curl
+      - php-cli
+      - php-dev
+      - php-cli
+      - php-common
+      - php-mbstring
+      - php-intl
+      - php-zip
+      - php-bcmath
+      - php-xml

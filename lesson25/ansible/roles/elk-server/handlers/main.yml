@@ -1,0 +1,27 @@
+---
+- name: restart elasticsearch
+  ansible.builtin.systemd:
+    name: elasticsearch
+    state: restarted
+
+- name: restart kibana
+  ansible.builtin.systemd:
+    name: kibana
+    state: restarted
+
+- name: restart logstash
+  ansible.builtin.systemd:
+    name: logstash
+    state: restarted
+
+- name: restart filebeat
+  ansible.builtin.systemd:
+    name: filebeat
+    state: restarted
+    enabled: yes
+
+- name: restart metricbeat
+  ansible.builtin.systemd:
+    name: metricbeat
+    state: restarted
+    enabled: yes

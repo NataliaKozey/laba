@@ -1,0 +1,9 @@
+---
+- name: Install and configure ELK client Application
+  hosts: tag_Role_app
+  become: yes
+  roles:
+    - elk-client
+
+
+#ansible-playbook elk-playbook.yml -i inventory.ini --diff --check

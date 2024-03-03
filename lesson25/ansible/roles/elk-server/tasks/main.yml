@@ -1,0 +1,25 @@
+---
+- name: Install net-tools
+  ansible.builtin.apt:
+    name: net-tools
+    state: present
+
+- name: Import public GPG key
+  ansible.builtin.apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add ES repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://artifacts.elastic.co/packages/8.x/apt stable main"
+    state: present
+
+- name: Install and configure ElasticSearch
+  include_tasks: elastic.yml
+
+- name: Install and configure Kibana
+  include_tasks: kibana.yml
+
+- name: Install and configure Logstash
+  include_tasks: logstash.yml
+

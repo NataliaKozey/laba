@@ -21,4 +21,12 @@
 перевірте, чи моніторинговий сервіс встановлений і працює коректно
 підготуйте readme.md (http://readme.md) у директорії ролі, включно з описом використаної конфігурації, особливостями запуску тощо
 
-#ansible-playbook elk-playbook.yml -i inventory.ini --diff --check
+Встановлено та запущено ELK server
+Уcпішне виконання playbook
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson24/images/img.png)
+Перевірка статусів встановлених сервісів
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson24/images/img_1.png)
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson24/images/img_2.png)
+![image1](https://github.com/NataliaKozey/laba/blob/master/lesson24/images/img_3.png)
+# ansible-playbook elk-playbook.yml --diff --check
+

@@ -1,0 +1,20 @@
+server.port: {{ kibana_port }}
+server.host: {{ server_host }}
+
+pid.file: /run/kibana/kibana.pid
+
+logging:
+    appenders:
+        file:
+            type: file
+            fileName: /var/log/kibana/kibana.log
+            layout:
+                type: json
+    root:
+        appenders:
+            - default
+            - file
+
+elasticsearch.hosts: ["http://localhost:{{ es_port }}"]
+
+i18n.locale: "en"
